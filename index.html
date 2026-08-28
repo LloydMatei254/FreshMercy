@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Fresh Mercy — Where Mercy Meets You. A gospel-centered community rooted in Lamentations 3:22-23. New mercies every morning." />
+  <title>Fresh Mercy | Where Mercy Meets You</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Google Fonts: Playfair Display (serif), Cormorant Garamond (script feel), Lato (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo" aria-label="Fresh Mercy Home">
+        <span class="logo-fresh">FRESH</span><span class="logo-mercy">Mercy</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#scripture">Word</a></li>
+          <li><a href="#pillars">Pillars</a></li>
+          <li><a href="#devotional">Devotional</a></li>
+          <li><a href="#community">Community</a></li>
+          <li><a href="#contact" class="nav-cta">Join Us</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="hero" aria-labelledby="hero-heading">
+      <div class="hero-bg-overlay"></div>
+
+      <!-- Inline SVG logo mark — sunrise over hills with leaf -->
+      <div class="hero-logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+          <!-- Outer circle -->
+          <circle cx="110" cy="100" r="88" fill="none" stroke="#C9A84C" stroke-width="2.5"/>
+          <!-- Sun rays -->
+          <g stroke="#C9A84C" stroke-width="1.5" opacity="0.9">
+            <line x1="110" y1="28" x2="110" y2="18"/>
+            <line x1="135" y1="34" x2="140" y2="25"/>
+            <line x1="155" y1="50" x2="163" y2="43"/>
+            <line x1="85" y1="34" x2="80" y2="25"/>
+            <line x1="65" y1="50" x2="57" y2="43"/>
+            <line x1="170" y1="72" x2="179" y2="68"/>
+            <line x1="50" y1="72" x2="41" y2="68"/>
+          </g>
+          <!-- Sun circle -->
+          <circle cx="110" cy="68" r="18" fill="#C9A84C" opacity="0.85"/>
+          <!-- Hills -->
+          <ellipse cx="75" cy="128" rx="55" ry="38" fill="#4A6741"/>
+          <ellipse cx="148" cy="132" rx="58" ry="34" fill="#2D4A2D"/>
+          <!-- River/path -->
+          <path d="M110 195 Q108 165 112 148 Q116 130 110 108 Q104 90 110 68" fill="none" stroke="#FAF6EF" stroke-width="10" stroke-linecap="round" opacity="0.6"/>
+          <!-- Leaf branch (left) -->
+          <g fill="#4A6741" opacity="0.95">
+            <path d="M52 110 Q40 90 30 72 Q38 85 55 98 Z"/>
+            <path d="M55 98 Q35 82 28 60 Q40 76 58 90 Z"/>
+            <path d="M58 90 Q42 74 38 50 Q50 66 62 82 Z"/>
+            <path d="M62 82 Q48 66 48 42 Q58 58 64 76 Z"/>
+            <path d="M64 76 Q54 60 57 36 Q66 52 66 70 Z"/>
+            <!-- stem -->
+            <path d="M52 110 Q55 95 66 70" fill="none" stroke="#4A6741" stroke-width="2.5"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="hero-content" id="hero-heading">
+        <h1 class="hero-title">
+          <span class="title-fresh">FRESH</span>
+          <span class="title-mercy">Mercy</span>
+        </h1>
+        <p class="hero-tagline">— Where Mercy Meets You —</p>
+        <p class="hero-scripture">Lam. 3:22–23</p>
+        <p class="hero-verse">"The steadfast love of the LORD never ceases; his mercies never come to an end; they are new every morning."</p>
+        <div class="hero-actions">
+          <a href="#about" class="btn btn-primary">Discover More</a>
+          <a href="#devotional" class="btn btn-outline">Daily Devotional</a>
+        </div>
+      </div>
+
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ===== SCRIPTURE BANNER ===== -->
+    <section class="scripture-banner" id="scripture" aria-label="Scripture highlight">
+      <div class="container">
+        <blockquote>
+          <p>"It is of the LORD's mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness."</p>
+          <cite>— Lamentations 3:22–23 (KJV)</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section class="about section" id="about" aria-labelledby="about-heading">
+      <div class="container about-grid">
+        <div class="about-visual" aria-hidden="true">
+          <div class="about-illustration">
+            <div class="sunrise-card">
+              <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                <rect width="300" height="200" fill="#FAF6EF" rx="16"/>
+                <!-- Sky gradient simulation -->
+                <ellipse cx="150" cy="80" rx="140" ry="60" fill="#F5E9C8" opacity="0.6"/>
+                <!-- Sun -->
+                <circle cx="150" cy="85" r="28" fill="#C9A84C" opacity="0.9"/>
+                <!-- Sun rays -->
+                <g stroke="#C9A84C" stroke-width="2" opacity="0.6">
+                  <line x1="150" y1="48" x2="150" y2="38"/>
+                  <line x1="172" y1="55" x2="179" y2="47"/>
+                  <line x1="183" y1="76" x2="193" y2="73"/>
+                  <line x1="128" y1="55" x2="121" y2="47"/>
+                  <line x1="117" y1="76" x2="107" y2="73"/>
+                </g>
+                <!-- Hills -->
+                <ellipse cx="90" cy="155" rx="80" ry="50" fill="#4A6741"/>
+                <ellipse cx="215" cy="160" rx="90" ry="48" fill="#2D4A2D"/>
+                <!-- River -->
+                <path d="M150 200 Q148 175 152 158 Q156 140 150 115 Q145 100 150 85" fill="none" stroke="#D4C5A0" stroke-width="12" stroke-linecap="round" opacity="0.5"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-text">
+          <span class="section-label">Who We Are</span>
+          <h2 id="about-heading">A Gospel-Centered Community</h2>
+          <p>Fresh Mercy is a gospel-rooted ministry built on one profound truth — God's mercy is renewed every single morning. No matter where you've been or what you've carried, His compassions never fail.</p>
+          <p>We exist to point every weary heart back to the Father who runs toward the prodigal, who lifts the broken, and whose love is steadfast and unending. This is not religion — this is relationship.</p>
+          <a href="#pillars" class="btn btn-primary">Our Pillars</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PILLARS SECTION ===== -->
+    <section class="pillars section" id="pillars" aria-labelledby="pillars-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">What We Stand On</span>
+          <h2 id="pillars-heading">Our Pillars</h2>
+        </div>
+        <div class="pillars-grid">
+
+          <article class="pillar-card" aria-labelledby="pillar1">
+            <div class="pillar-icon" aria-hidden="true">
+              <!-- Cross / grace icon -->
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="28" y="8" width="8" height="48" rx="4" fill="#C9A84C"/>
+                <rect x="12" y="22" width="40" height="8" rx="4" fill="#C9A84C"/>
+              </svg>
+            </div>
+            <h3 id="pillar1">Grace Alone</h3>
+            <p>Salvation is not earned — it is freely given. We proclaim the grace of God that appears to all people, offering redemption through Christ alone.</p>
+          </article>
+
+          <article class="pillar-card" aria-labelledby="pillar2">
+            <div class="pillar-icon" aria-hidden="true">
+              <!-- Open book icon -->
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 16 Q32 12 32 32 Q32 12 56 16 L56 52 Q32 46 32 52 Q32 46 8 52 Z" fill="#4A6741" opacity="0.9"/>
+                <line x1="32" y1="16" x2="32" y2="52" stroke="#FAF6EF" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3 id="pillar2">The Living Word</h3>
+            <p>Scripture is our foundation and our daily bread. We dig into God's Word to be transformed, not just informed — letting it renew our minds and shape our lives.</p>
+          </article>
+
+          <article class="pillar-card" aria-labelledby="pillar3">
+            <div class="pillar-icon" aria-hidden="true">
+              <!-- Hands / prayer icon -->
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 44 Q16 30 20 18 Q22 12 26 14 L26 30" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <path d="M44 44 Q48 30 44 18 Q42 12 38 14 L38 30" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <path d="M26 30 Q26 20 30 18 Q34 16 38 20 L38 30" fill="#C9A84C" opacity="0.3"/>
+                <path d="M18 44 Q32 54 46 44" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" fill="none"/>
+              </svg>
+            </div>
+            <h3 id="pillar3">Prayer &amp; Surrender</h3>
+            <p>We believe prayer is not a last resort — it is our first response. In surrender, we find strength. In seeking Him, we are found.</p>
+          </article>
+
+          <article class="pillar-card" aria-labelledby="pillar4">
+            <div class="pillar-icon" aria-hidden="true">
+              <!-- Heart/community icon -->
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M32 52 Q10 38 10 24 A12 12 0 0 1 32 18 A12 12 0 0 1 54 24 Q54 38 32 52Z" fill="#2D4A2D" opacity="0.85"/>
+              </svg>
+            </div>
+            <h3 id="pillar4">Authentic Community</h3>
+            <p>Mercy is best shared, not stored. We build honest, life-giving community where the broken are welcomed, the weary find rest, and no one walks alone.</p>
+          </article>
+
+          <article class="pillar-card" aria-labelledby="pillar5">
+            <div class="pillar-icon" aria-hidden="true">
+              <!-- Leaf/renewal icon -->
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M32 56 Q12 40 14 20 Q24 8 44 10 Q58 26 48 44 Q40 54 32 56Z" fill="#4A6741" opacity="0.9"/>
+                <path d="M32 56 Q28 36 32 10" stroke="#FAF6EF" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 id="pillar5">Daily Renewal</h3>
+            <p>New morning, new mercy. We teach the rhythm of daily returning to God — through devotion, repentance, and the continual renewal of His spirit within us.</p>
+          </article>
+
+          <article class="pillar-card" aria-labelledby="pillar6">
+            <div class="pillar-icon" aria-hidden="true">
+              <!-- Globe/mission icon -->
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="22" stroke="#C9A84C" stroke-width="2.5"/>
+                <ellipse cx="32" cy="32" rx="10" ry="22" stroke="#C9A84C" stroke-width="2"/>
+                <line x1="10" y1="32" x2="54" y2="32" stroke="#C9A84C" stroke-width="2"/>
+                <line x1="32" y1="10" x2="32" y2="54" stroke="#C9A84C" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3 id="pillar6">Gospel Mission</h3>
+            <p>The Great Commission is not optional. We go — into our homes, our neighborhoods, and to the ends of the earth — carrying the good news of Jesus Christ.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DEVOTIONAL SECTION ===== -->
+    <section class="devotional section" id="devotional" aria-labelledby="devotional-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">New Every Morning</span>
+          <h2 id="devotional-heading">Daily Devotional</h2>
+          <p class="section-desc">Start your morning anchored in truth. Our devotionals are short, scripture-grounded, and designed to meet you wherever you are.</p>
+        </div>
+
+        <div class="devotional-grid">
+
+          <article class="devotional-card featured" aria-label="Featured devotional">
+            <div class="card-tag">Featured</div>
+            <span class="card-date">Morning Mercy</span>
+            <h3>"Running Toward the Prodigal"</h3>
+            <p>Before he could finish his rehearsed apology, the father was already running. That is the picture of our God — not waiting with crossed arms, but sprinting toward every soul that turns homeward.</p>
+            <p class="card-scripture">Luke 15:20 — "But while he was still a long way off, his father saw him and was filled with compassion for him; he ran to his son, threw his arms around him and kissed him."</p>
+            <a href="#contact" class="btn btn-primary">Read Full Devotional</a>
+          </article>
+
+          <article class="devotional-card" aria-label="Devotional 2">
+            <span class="card-date">Day 2</span>
+            <h3>"His Mercies Are Not Exhausted"</h3>
+            <p>The Hebrew word for mercies in Lamentations is <em>rahamim</em> — compassion rooted in deep, tender love. They cannot run dry because they flow from an inexhaustible God.</p>
+            <p class="card-scripture">Lam. 3:22–23</p>
+            <a href="#contact" class="btn btn-outline-dark">Read More</a>
+          </article>
+
+          <article class="devotional-card" aria-label="Devotional 3">
+            <span class="card-date">Day 3</span>
+            <h3>"Great Is Thy Faithfulness"</h3>
+            <p>When Thomas Chisholm penned those words, he was reflecting on a lifetime of ordinary days where God showed up. Faithfulness is not just a grand gesture — it is God, faithful in the small things.</p>
+            <p class="card-scripture">Lam. 3:23 — "Great is your faithfulness."</p>
+            <a href="#contact" class="btn btn-outline-dark">Read More</a>
+          </article>
+
+        </div>
+
+        <div class="devotional-signup">
+          <p>Get fresh mercy in your inbox every morning.</p>
+          <form class="signup-form" aria-label="Devotional email signup" novalidate>
+            <label for="email-signup" class="sr-only">Your email address</label>
+            <input type="email" id="email-signup" name="email" placeholder="Your email address" required autocomplete="email"/>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VERSE HIGHLIGHT ===== -->
+    <section class="verse-highlight" aria-label="Highlighted verse">
+      <div class="container">
+        <div class="verse-content">
+          <div class="verse-decoration" aria-hidden="true">✦</div>
+          <h2>"The LORD is good to those who wait for him, to the soul who seeks him."</h2>
+          <p>— Lamentations 3:25</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COMMUNITY SECTION ===== -->
+    <section class="community section" id="community" aria-labelledby="community-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">You Are Not Alone</span>
+          <h2 id="community-heading">Join the Community</h2>
+          <p class="section-desc">Fresh Mercy is more than a website — it is a gathering of souls hungry for God. Come as you are. Leave knowing you are loved.</p>
+        </div>
+
+        <div class="community-features">
+          <div class="community-feature">
+            <div class="feature-icon" aria-hidden="true">📖</div>
+            <h3>Bible Studies</h3>
+            <p>Weekly deep dives into scripture — live and recorded — for every season of faith.</p>
+          </div>
+          <div class="community-feature">
+            <div class="feature-icon" aria-hidden="true">🙏</div>
+            <h3>Prayer Circle</h3>
+            <p>Submit your prayer requests. Our team prays over every single one. You are seen and covered.</p>
+          </div>
+          <div class="community-feature">
+            <div class="feature-icon" aria-hidden="true">🎶</div>
+            <h3>Worship &amp; Reflection</h3>
+            <p>Curated worship playlists and guided reflection times to draw your heart into His presence.</p>
+          </div>
+          <div class="community-feature">
+            <div class="feature-icon" aria-hidden="true">💬</div>
+            <h3>Gospel Conversations</h3>
+            <p>Honest, grace-filled discussions on faith, doubt, life, and the beauty of the gospel.</p>
+          </div>
+        </div>
+
+        <div class="testimonials">
+          <h3 class="testimonials-label">Stories of Mercy</h3>
+          <div class="testimonials-grid">
+            <blockquote class="testimonial-card">
+              <p>"I came to Fresh Mercy in the darkest season of my life. The daily devotionals reminded me every morning that God had not forgotten me."</p>
+              <cite>— Amara T.</cite>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <p>"For the first time in years I felt like I could be honest about my struggles in a Christian space. This community is the real deal."</p>
+              <cite>— David O.</cite>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <p>"Lam. 3:22–23 became my lifeline. Fresh Mercy helped me understand those verses in a way that genuinely changed how I wake up every day."</p>
+              <cite>— Grace M.</cite>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT / JOIN SECTION ===== -->
+    <section class="contact section" id="contact" aria-labelledby="contact-heading">
+      <div class="container contact-grid">
+        <div class="contact-text">
+          <span class="section-label">Reach Out</span>
+          <h2 id="contact-heading">Where Mercy Meets You</h2>
+          <p>Whether you have questions, need prayer, or just want to connect — we are here. No judgment, no conditions. Just grace.</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <span aria-hidden="true">✉</span>
+              <a href="mailto:hello@freshmercy.org">hello@freshmercy.org</a>
+            </div>
+            <div class="contact-item">
+              <span aria-hidden="true">📍</span>
+              <span>Online &amp; In Your City</span>
+            </div>
+          </div>
+          <div class="social-links" aria-label="Social media links">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Follow Fresh Mercy on Instagram" class="social-link">Instagram</a>
+            <a href="#" class="social-link" aria-label="YouTube channel">YouTube</a>
+            <a href="#" class="social-link" aria-label="Podcast">Podcast</a>
+          </div>
+        </div>
+
+        <form class="contact-form" aria-label="Contact form" novalidate id="contactForm">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="e.g. Sarah Johnson" required autocomplete="name"/>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email"/>
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Share your heart, prayer request, or just say hello..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary full-width">Send Message</button>
+          <p class="form-note">We read every message. You matter here.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <p class="footer-logo"><span class="logo-fresh">FRESH</span><span class="logo-mercy">Mercy</span></p>
+        <p class="footer-tagline">— Where Mercy Meets You —</p>
+        <p class="footer-verse">Lam. 3:22–23</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#about">About</a>
+        <a href="#scripture">Word</a>
+        <a href="#pillars">Pillars</a>
+        <a href="#devotional">Devotional</a>
+        <a href="#community">Community</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 Fresh Mercy. All rights reserved. Built on grace.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
