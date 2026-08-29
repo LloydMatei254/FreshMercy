@@ -24,26 +24,24 @@
       rel="stylesheet"
     />
 
-    <!-- Open Graph -->
+    <!-- Open Graph (URLs updated at runtime via react-helmet-async) -->
     <meta property="og:type"        content="website" />
-    <meta property="og:url"         content="%VITE_APP_URL%" />
     <meta property="og:title"       content="Fresh Mercy | Where Mercy Meets You" />
     <meta property="og:description" content="A gospel-centered community rooted in Lamentations 3:22-23. New mercies every morning." />
-    <meta property="og:image"       content="%VITE_APP_URL%/og-image.png" />
+    <meta property="og:image"       content="/og-image.png" />
 
     <!-- Twitter / X -->
     <meta name="twitter:card"        content="summary_large_image" />
     <meta name="twitter:title"       content="Fresh Mercy | Where Mercy Meets You" />
     <meta name="twitter:description" content="A gospel-centered community rooted in Lamentations 3:22-23." />
-    <meta name="twitter:image"       content="%VITE_APP_URL%/og-image.png" />
+    <meta name="twitter:image"       content="/og-image.png" />
 
-    <!-- Structured Data: Organization -->
+    <!-- Structured Data: Organization (canonical URL set by SEO component per page) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Fresh Mercy",
-      "url": "%VITE_APP_URL%",
       "description": "Where Mercy Meets You — A gospel-centered Christian ministry platform",
       "sameAs": []
     }

@@ -8,7 +8,7 @@ const beliefs = [
   { title: 'The Resurrection', desc: 'We believe in the bodily resurrection of Jesus Christ — the foundation of every hope we hold.' },
   { title: 'The Holy Spirit', desc: 'We believe the Holy Spirit indwells and empowers every believer, producing transformation from the inside out.' },
   { title: 'Prayer', desc: 'We believe prayer is not a last resort but a first response — the lifeblood of our relationship with God.' },
-  { title: 'Community', desc: 'We believe God's people are meant to do life together — honestly, vulnerably, and with grace.' },
+  { title: 'Community', desc: "We believe God's people are meant to do life together — honestly, vulnerably, and with grace." },
 ]
 
 export default function AboutPage() {
