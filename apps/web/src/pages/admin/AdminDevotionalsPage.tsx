@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
 import { SkeletonCard } from '@/components/ui/LoadingSpinner'
 import { formatDateShort } from '@/lib/utils'
-import type { ApiResponse, PaginatedResponse, DevotionalSummary } from '@/types'
+import type { PaginatedResponse, DevotionalSummary } from '@/types'
 
 function useAdminDevotionals(page = 1) {
   return useQuery({

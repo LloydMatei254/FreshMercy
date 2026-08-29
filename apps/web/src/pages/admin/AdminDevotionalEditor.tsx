@@ -46,7 +46,7 @@ export default function AdminDevotionalEditor() {
     watch,
     setValue,
     reset,
-    formState: { errors, isDirty },
+    formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: { status: 'DRAFT', author: 'Fresh Mercy' },

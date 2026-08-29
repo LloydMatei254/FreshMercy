@@ -1,13 +1,11 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { Search, ChevronLeft, ChevronRight } from 'lucide-react'
 import { SEO } from '@/components/features/SEO'
 import { DevotionalCard } from '@/components/features/DevotionalCard'
 import { Button } from '@/components/ui/Button'
-import { SkeletonCard, PageLoader } from '@/components/ui/LoadingSpinner'
+import { SkeletonCard } from '@/components/ui/LoadingSpinner'
 import { EmptyState } from '@/components/ui/EmptyState'
-import { useDevotionals } from '@/hooks/useDevotionals'
-import { useTodaysDevotional } from '@/hooks/useDevotionals'
+import { useDevotionals, useTodaysDevotional } from '@/hooks/useDevotionals'
 
 const PAGE_SIZE = 9
 
