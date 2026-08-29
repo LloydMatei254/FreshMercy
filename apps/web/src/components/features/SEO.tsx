@@ -1,83 +1,45 @@
-import { Helmet } from 'react-helmet-async'
+import { useEffect } from 'react'
 
 interface SEOProps {
   title?: string
   description?: string
-  image?: string
-  url?: string
-  type?: 'website' | 'article'
-  publishedAt?: string
-  author?: string
+  url?: string         // accepted but unused (canonical set in index.html)
+  type?: string        // accepted but unused
+  publishedAt?: string // accepted but unused
+  author?: string      // accepted but unused
+  image?: string       // accepted but unused
   noIndex?: boolean
 }
 
 const BASE_TITLE = 'Fresh Mercy'
 const BASE_DESC  = 'Where Mercy Meets You — A gospel-centered community rooted in Lamentations 3:22-23.'
-const BASE_URL   = import.meta.env.VITE_APP_URL ?? 'https://freshmercy.org'
-const OG_IMAGE   = `${BASE_URL}/og-image.png`
 
-export function SEO({
-  title,
-  description = BASE_DESC,
-  image = OG_IMAGE,
-  url,
-  type = 'website',
-  publishedAt,
-  author,
-  noIndex = false,
-}: SEOProps) {
-  const fullTitle = title ? `${title} | ${BASE_TITLE}` : `${BASE_TITLE} | Where Mercy Meets You`
-  const canonicalUrl = url ? `${BASE_URL}${url}` : BASE_URL
+export function SEO({ title, description = BASE_DESC, noIndex = false }: SEOProps) {
+  const fullTitle = title
+    ? `${title} | ${BASE_TITLE}`
+    : `${BASE_TITLE} | Where Mercy Meets You`
 
-  return (
-    <Helmet>
-      <title>{fullTitle}</title>
-      <meta name="description" content={description} />
-      <link rel="canonical" href={canonicalUrl} />
-      {noIndex && <meta name="robots" content="noindex, nofollow" />}
+  useEffect(() => {
+    document.title = fullTitle
 
-      {/* Open Graph */}
-      <meta property="og:type"        content={type} />
-      <meta property="og:url"         content={canonicalUrl} />
-      <meta property="og:title"       content={fullTitle} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image"       content={image} />
-      <meta property="og:site_name"   content="Fresh Mercy" />
+    let metaDesc = document.querySelector<HTMLMetaElement>('meta[name="description"]')
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta')
+      metaDesc.setAttribute('name', 'description')
+      document.head.appendChild(metaDesc)
+    }
+    metaDesc.setAttribute('content', description)
 
-      {/* Twitter */}
-      <meta name="twitter:card"        content="summary_large_image" />
-      <meta name="twitter:title"       content={fullTitle} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image"       content={image} />
+    if (noIndex) {
+      let metaRobots = document.querySelector<HTMLMetaElement>('meta[name="robots"]')
+      if (!metaRobots) {
+        metaRobots = document.createElement('meta')
+        metaRobots.setAttribute('name', 'robots')
+        document.head.appendChild(metaRobots)
+      }
+      metaRobots.setAttribute('content', 'noindex, nofollow')
+    }
+  }, [fullTitle, description, noIndex])
 
-      {/* Article-specific */}
-      {type === 'article' && publishedAt && (
-        <meta property="article:published_time" content={publishedAt} />
-      )}
-      {type === 'article' && author && (
-        <meta property="article:author" content={author} />
-      )}
-
-      {/* Structured data */}
-      {type === 'article' && (
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context':       'https://schema.org',
-            '@type':          'Article',
-            headline:         fullTitle,
-            description,
-            image,
-            url:              canonicalUrl,
-            datePublished:    publishedAt,
-            author:           { '@type': 'Person', name: author ?? 'Fresh Mercy' },
-            publisher:        {
-              '@type': 'Organization',
-              name:    'Fresh Mercy',
-              url:     BASE_URL,
-            },
-          })}
-        </script>
-      )}
-    </Helmet>
-  )
+  return null
 }
