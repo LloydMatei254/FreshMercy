@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── BASE RESETS & TOKENS ───────────────────────────────── */
+@layer base {
+  :root {
+    --color-cream:    #FAF6EF;
+    --color-gold:     #C9A84C;
+    --color-olive:    #4A6741;
+    --color-forest:   #2D4A2D;
+    --color-dark:     #1E2D1E;
+    --color-mid:      #4A4A3A;
+    --radius:         12px;
+  }
+
+  html {
+    @apply scroll-smooth;
+    font-size: 16px;
+  }
+
+  body {
+    @apply bg-cream font-sans text-forest antialiased;
+    line-height: 1.7;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-gold ring-offset-2;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-forest;
+    line-height: 1.2;
+  }
+
+  p {
+    @apply text-[#4A4A3A];
+    line-height: 1.75;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  img {
+    @apply max-w-full;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ── COMPONENT UTILITIES ────────────────────────────────── */
+@layer components {
+  .container-narrow {
+    @apply max-w-3xl mx-auto px-5;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+
+  .section-label {
+    @apply inline-block text-xs font-bold tracking-[0.2em] uppercase text-gold mb-2;
+  }
+
+  .prose-mercy {
+    @apply max-w-none;
+    & h2 { @apply font-serif text-2xl text-forest mt-8 mb-4; }
+    & h3 { @apply font-serif text-xl text-forest mt-6 mb-3; }
+    & p  { @apply text-[#4A4A3A] leading-relaxed mb-4; }
+    & blockquote {
+      @apply border-l-2 border-gold pl-5 my-6 italic text-forest font-serif text-lg;
+    }
+    & strong { @apply text-forest font-bold; }
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lifted;
+  }
+
+  .link-underline {
+    @apply border-b border-gold pb-px hover:text-gold transition-colors duration-200;
+  }
+
+  /* Scripture block */
+  .scripture-block {
+    @apply border-l-2 border-gold pl-5 py-2 my-4 font-serif italic text-forest;
+  }
+}
+
+/* ── CUSTOM SCROLLBAR ───────────────────────────────────── */
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.gold.400') theme('colors.cream.200');
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: theme('colors.cream.200');
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: theme('colors.gold.400');
+    border-radius: 3px;
+  }
+
+  /* Text gradient */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #C9A84C, #E2C97E, #C9A84C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glass morphism for modals / overlays */
+  .glass {
+    backdrop-filter: blur(12px);
+    background: rgba(250, 246, 239, 0.85);
+  }
+}

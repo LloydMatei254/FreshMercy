@@ -1,0 +1,46 @@
+{
+  "name": "fresh-mercy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FreshMercy — Where Mercy Meets You. A gospel-centered ministry platform.",
+  "workspaces": [
+    "apps/web",
+    "apps/api"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=apps/api\" \"npm run dev --workspace=apps/web\"",
+    "build": "npm run build --workspace=apps/api && npm run build --workspace=apps/web",
+    "test": "npm run test --workspace=apps/api && npm run test --workspace=apps/web",
+    "lint": "npm run lint --workspace=apps/web && npm run lint --workspace=apps/api",
+    "typecheck": "npm run typecheck --workspace=apps/web && npm run typecheck --workspace=apps/api",
+    "db:generate": "prisma generate --schema=prisma/schema.prisma",
+    "db:migrate": "prisma migrate dev --schema=prisma/schema.prisma",
+    "db:migrate:deploy": "prisma migrate deploy --schema=prisma/schema.prisma",
+    "db:seed": "ts-node --esm prisma/seed.ts",
+    "db:studio": "prisma studio --schema=prisma/schema.prisma",
+    "db:reset": "prisma migrate reset --schema=prisma/schema.prisma"
+  },
+  "devDependencies": {
+    "concurrently": "9.1.2",
+    "prisma": "6.7.0",
+    "ts-node": "10.9.2",
+    "typescript": "5.7.3"
+  },
+  "dependencies": {
+    "@prisma/client": "6.7.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "allowScripts": {
+    "@prisma/client@6.7.0": true,
+    "@prisma/engines@6.7.0": true,
+    "prisma@6.7.0": true,
+    "esbuild@0.28.2": true,
+    "esbuild@0.23.1": true,
+    "esbuild@0.21.5": true,
+    "esbuild@0.24.2": true,
+    "argon2@0.41.1": true
+  }
+}

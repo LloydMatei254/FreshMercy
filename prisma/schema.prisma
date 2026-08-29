@@ -1,0 +1,158 @@
+// Fresh Mercy — Prisma Schema
+// Database: PostgreSQL
+// ORM: Prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ── User (admins / editors) ────────────────────────────────
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         UserRole @default(EDITOR)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([email])
+}
+
+enum UserRole {
+  SUPER_ADMIN
+  ADMIN
+  EDITOR
+}
+
+// ── Devotional ─────────────────────────────────────────────
+model Devotional {
+  id                  String           @id @default(cuid())
+  title               String
+  slug                String           @unique
+  excerpt             String           @db.VarChar(500)
+  content             String           @db.Text
+  scripture           String           @db.Text
+  scriptureReference  String
+  prayer              String?          @db.Text
+  reflectionQuestions String[]
+  author              String
+  authorBio           String?
+  featuredImage       String?
+  publishedAt         DateTime?
+  status              DevotionalStatus @default(DRAFT)
+  readingTimeMinutes  Int?
+  categories          Category[]
+  tags                Tag[]
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
+
+  @@index([slug])
+  @@index([status])
+  @@index([publishedAt])
+}
+
+enum DevotionalStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+// ── Category ───────────────────────────────────────────────
+model Category {
+  id         String       @id @default(cuid())
+  name       String       @unique
+  slug       String       @unique
+  color      String?
+  devotionals Devotional[]
+  createdAt  DateTime     @default(now())
+
+  @@index([slug])
+}
+
+// ── Tag ────────────────────────────────────────────────────
+model Tag {
+  id         String       @id @default(cuid())
+  name       String       @unique
+  slug       String       @unique
+  devotionals Devotional[]
+  createdAt  DateTime     @default(now())
+
+  @@index([slug])
+}
+
+// ── Newsletter Subscriber ──────────────────────────────────
+model NewsletterSubscriber {
+  id              String           @id @default(cuid())
+  email           String           @unique
+  status          SubscriberStatus @default(ACTIVE)
+  source          String           @default("website")
+  consentAt       DateTime?
+  subscribedAt    DateTime         @default(now())
+  unsubscribedAt  DateTime?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  @@index([email])
+  @@index([status])
+}
+
+enum SubscriberStatus {
+  ACTIVE
+  UNSUBSCRIBED
+}
+
+// ── Prayer Request ─────────────────────────────────────────
+model PrayerRequest {
+  id          String              @id @default(cuid())
+  name        String?
+  email       String?
+  request     String              @db.Text
+  isAnonymous Boolean             @default(false)
+  status      PrayerRequestStatus @default(NEW)
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+enum PrayerRequestStatus {
+  NEW
+  PRAYED
+  ARCHIVED
+}
+
+// ── Contact Message ────────────────────────────────────────
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String   @db.Text
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([isRead])
+  @@index([createdAt])
+}
+
+// ── Story ──────────────────────────────────────────────────
+model Story {
+  id        String   @id @default(cuid())
+  name      String
+  location  String?
+  story     String   @db.Text
+  image     String?
+  approved  Boolean  @default(false)
+  featured  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([approved])
+}
