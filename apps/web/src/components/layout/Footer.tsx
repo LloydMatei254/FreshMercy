@@ -64,7 +64,15 @@ export function Footer() {
         setStatus('error')
         setMessage('Something went wrong. Please try again.')
       }
-    } catch {
+    } catch (err: unknown) {
+      const code = (err as { response?: { data?: { error?: { code?: string } } } })
+                    ?.response?.data?.error?.code
+      if (code === 'CONFLICT') {
+        setStatus('success')
+        setMessage('You are already subscribed — fresh mercy is coming! ✦')
+        setEmail('')
+        return
+      }
       setStatus('error')
       setMessage('Unable to subscribe right now. Please try again.')
     }

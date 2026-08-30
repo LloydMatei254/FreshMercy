@@ -45,7 +45,19 @@ export function NewsletterForm({
         setStatus('error')
         setMessage('Something went wrong. Please try again.')
       }
-    } catch {
+    } catch (err: unknown) {
+      // Handle 409 — already subscribed — treat as success
+      const status = (err as { response?: { status?: number } })?.response?.status
+      const code   = (err as { response?: { data?: { error?: { code?: string } } } })
+                      ?.response?.data?.error?.code
+
+      if (status === 409 || code === 'CONFLICT') {
+        setStatus('success')
+        setMessage('You are already subscribed — fresh mercy is on its way! ✦')
+        reset()
+        return
+      }
+
       setStatus('error')
       setMessage('Unable to subscribe right now. Please try again.')
     }
