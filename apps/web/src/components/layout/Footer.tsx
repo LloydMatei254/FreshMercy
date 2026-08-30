@@ -190,8 +190,9 @@ export function Footer() {
         <div className="border-t border-cream/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/40">
           <p>© {year} Fresh Mercy. All rights reserved. Built on grace.</p>
           <div className="flex gap-5">
-            <Link to="/privacy" className="hover:text-cream/70 transition-colors">Privacy</Link>
-            <Link to="/terms"   className="hover:text-cream/70 transition-colors">Terms</Link>
+            <Link to="/privacy"      className="hover:text-cream/70 transition-colors">Privacy</Link>
+            <Link to="/terms"        className="hover:text-cream/70 transition-colors">Terms</Link>
+            <Link to="/admin/login"  className="hover:text-cream/70 transition-colors opacity-40 hover:opacity-100">Admin</Link>
           </div>
         </div>
       </div>
