@@ -53,10 +53,10 @@ export default function PrivacyPage() {
             <li>Request correction or deletion of your data</li>
             <li>Unsubscribe from any communications at any time</li>
           </ul>
-          <p>To exercise any of these rights, email us at <a href="mailto:hello@freshmercy.org" className="text-gold hover:underline">hello@freshmercy.org</a>.</p>
+          <p>To exercise any of these rights, email us at <a href="mailto:lloydmatei@gmail.com" className="text-gold hover:underline">lloydmatei@gmail.com</a>.</p>
 
           <h2>8. Contact</h2>
-          <p>For any questions about this Privacy Policy, contact us at <a href="mailto:hello@freshmercy.org" className="text-gold hover:underline">hello@freshmercy.org</a>.</p>
+          <p>For any questions about this Privacy Policy, contact us at <a href="mailto:lloydmatei@gmail.com" className="text-gold hover:underline">lloydmatei@gmail.com</a>.</p>
         </div>
       </div>
     </>

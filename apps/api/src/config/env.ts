@@ -19,7 +19,7 @@ const envSchema = z.object({
   ADMIN_EMAIL:  z.string().default('admin@freshmercy.org'),
 
   EMAIL_PROVIDER: z.enum(['resend', 'sendgrid', 'mailgun', 'smtp', 'console']).default('console'),
-  EMAIL_FROM:    z.string().default('Fresh Mercy <hello@freshmercy.org>'),
+  EMAIL_FROM:    z.string().default('Fresh Mercy <lloydmatei@gmail.com>'),
   RESEND_API_KEY:  z.string().optional(),
   SENDGRID_API_KEY: z.string().optional(),
   SMTP_HOST:    z.string().optional(),

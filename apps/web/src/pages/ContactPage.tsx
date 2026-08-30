@@ -71,10 +71,10 @@ export default function ContactPage() {
               <div className="flex items-center gap-3 text-sm text-[#4A4A3A]">
                 <Mail className="h-4 w-4 text-gold shrink-0" aria-hidden="true" />
                 <a
-                  href="mailto:hello@freshmercy.org"
+                  href="mailto:lloydmatei@gmail.com"
                   className="hover:text-gold transition-colors"
                 >
-                  hello@freshmercy.org
+                  lloydmatei@gmail.com
                 </a>
               </div>
             </div>

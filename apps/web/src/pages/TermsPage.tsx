@@ -39,7 +39,7 @@ export default function TermsPage() {
           <p>We may update these Terms at any time. Continued use of the site after changes constitutes acceptance of the updated terms.</p>
 
           <h2>9. Contact</h2>
-          <p>Questions about these Terms? Email <a href="mailto:hello@freshmercy.org" className="text-gold hover:underline">hello@freshmercy.org</a>.</p>
+          <p>Questions about these Terms? Email <a href="mailto:lloydmatei@gmail.com" className="text-gold hover:underline">lloydmatei@gmail.com</a>.</p>
         </div>
       </div>
     </>
