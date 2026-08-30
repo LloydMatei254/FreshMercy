@@ -1,3 +1,6 @@
+[variables]
+NODE_ENV = "development"
+
 [phases.install]
 cmds = ["npm install --legacy-peer-deps"]
 
@@ -7,5 +10,8 @@ cmds = [
   "npx tsc"
 ]
 
+[phases.post_build]
+cmds = ["echo 'Build complete'"]
+
 [start]
-cmd = "node dist/index.js"
+cmd = "NODE_ENV=production node dist/index.js"

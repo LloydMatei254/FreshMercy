@@ -51,7 +51,9 @@ export async function sendEmail(payload: EmailPayload): Promise<void> {
 
     // Resend
     if (env.EMAIL_PROVIDER === 'resend' && env.RESEND_API_KEY) {
-      const res = await fetch('https://api.resend.com/emails', {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const globalFetch = (globalThis as any).fetch as typeof globalThis.fetch
+      const res = await globalFetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${env.RESEND_API_KEY}`,
