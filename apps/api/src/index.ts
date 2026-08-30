@@ -9,57 +9,56 @@ import router from './routes/index.js'
 
 const app = express()
 
-// ── Security headers ───────────────────────────────────────
 app.use(helmet({
   contentSecurityPolicy: env.NODE_ENV === 'production' ? undefined : false,
 }))
 
-// ── CORS ──────────────────────────────────────────────────
 app.use(cors({
-  origin:      env.FRONTEND_URL,
-  credentials: true,
-  methods:     ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  origin:         env.FRONTEND_URL,
+  credentials:    true,
+  methods:        ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }))
 
-// ── Body parsing ──────────────────────────────────────────
 app.use(express.json({ limit: '1mb' }))
 app.use(express.urlencoded({ extended: true, limit: '1mb' }))
-
-// ── Trust proxy (for rate limiting behind Nginx/Cloudflare) ──
 app.set('trust proxy', 1)
 
-// ── Routes ────────────────────────────────────────────────
+// ── Health check (always responds — no DB needed) ─────────
+app.get('/api/health', (_req, res) => {
+  res.json({ success: true, data: { status: 'ok', timestamp: new Date().toISOString() } })
+})
+
 app.use('/api', router)
 
-// ── 404 fallback ─────────────────────────────────────────
 app.use((_req, res) => {
   res.status(404).json({ success: false, error: { code: 'NOT_FOUND', message: 'Route not found' } })
 })
 
-// ── Global error handler ──────────────────────────────────
 app.use(errorHandler)
 
-// ── Start server ─────────────────────────────────────────
+// ── Start server — don't crash if DB is unavailable ───────
 async function start() {
-  try {
-    await prisma.$connect()
-    logger.info('Database connected')
+  // Start listening immediately — don't wait for DB
+  const server = app.listen(env.PORT, () => {
+    logger.info(`🙏 Fresh Mercy API running on port ${env.PORT} [${env.NODE_ENV}]`)
+    logger.info(`🔑 DATABASE_URL present: ${!!process.env.DATABASE_URL}`)
+    logger.info(`🔑 JWT_SECRET present:   ${!!process.env.JWT_SECRET}`)
+  })
 
-    app.listen(env.PORT, () => {
-      logger.info(`🙏 Fresh Mercy API running on port ${env.PORT} [${env.NODE_ENV}]`)
+  // Try to connect to DB in the background
+  prisma.$connect()
+    .then(() => logger.info('✅ Database connected'))
+    .catch((err) => {
+      logger.error({ err }, '⚠️  Database connection failed — API running without DB')
     })
-  } catch (err) {
-    logger.error({ err }, 'Failed to start server')
-    process.exit(1)
-  }
-}
 
-// Graceful shutdown
-process.on('SIGTERM', async () => {
-  logger.info('SIGTERM received — shutting down')
-  await prisma.$disconnect()
-  process.exit(0)
-})
+  process.on('SIGTERM', async () => {
+    logger.info('SIGTERM — shutting down')
+    server.close()
+    await prisma.$disconnect()
+    process.exit(0)
+  })
+}
 
 start()
