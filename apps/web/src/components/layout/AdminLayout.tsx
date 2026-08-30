@@ -1,5 +1,5 @@
-import { type ReactNode } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import {
   LayoutDashboard,
   BookOpen,
@@ -25,7 +25,7 @@ const adminNav = [
   { label: 'Settings',       to: '/admin/settings',         icon: Settings },
 ]
 
-export function AdminLayout({ children }: { children: ReactNode }) {
+export function AdminLayout({ children }: { children?: React.ReactNode }) {
   const { user, logout } = useAuth()
   const navigate = useNavigate()
 
@@ -90,7 +90,7 @@ export function AdminLayout({ children }: { children: ReactNode }) {
       {/* Main content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         <main className="flex-1 overflow-y-auto p-8 scrollbar-thin">
-          {children}
+          {children ?? <Outlet />}
         </main>
       </div>
     </div>

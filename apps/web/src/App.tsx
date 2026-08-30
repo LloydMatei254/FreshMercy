@@ -7,7 +7,7 @@ import { PageLoader } from '@/components/ui/LoadingSpinner'
 import { ProtectedRoute } from '@/components/features/ProtectedRoute'
 import { ErrorBoundary } from '@/components/features/ErrorBoundary'
 
-// ── Direct (non-lazy) imports — avoids silent Suspense failures ──
+// ── Page imports (direct, no lazy — avoids silent Suspense failures) ──
 import HomePage        from '@/pages/HomePage'
 import AboutPage       from '@/pages/AboutPage'
 import DevotionalsPage from '@/pages/DevotionalsPage'
@@ -31,17 +31,16 @@ import AdminMessagesPage     from '@/pages/admin/AdminMessagesPage'
 import AdminSubscribersPage  from '@/pages/admin/AdminSubscribersPage'
 import AdminStoriesPage      from '@/pages/admin/AdminStoriesPage'
 
-// ── Wrap each page in an error boundary ───────────────────
+// ── Error boundary wrapper ────────────────────────────────
 function Page({ children }: { children: React.ReactNode }) {
   return <ErrorBoundary>{children}</ErrorBoundary>
 }
 
-// ── Public layout: Navbar + page content + Footer ─────────
+// ── Public layout: Navbar + Outlet + Footer ───────────────
 function PublicLayout() {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
-      {/* pt-16 ensures content is never hidden behind the fixed navbar */}
       <main id="main-content" className="flex-1 pt-16" tabIndex={-1}>
         <Outlet />
       </main>
@@ -50,10 +49,24 @@ function PublicLayout() {
   )
 }
 
+// ── Protected admin layout wrapper ────────────────────────
+function AdminProtectedLayout() {
+  return (
+    <ProtectedRoute>
+      <AdminLayout>
+        <Suspense fallback={<PageLoader />}>
+          <Outlet />
+        </Suspense>
+      </AdminLayout>
+    </ProtectedRoute>
+  )
+}
+
 export default function App() {
   return (
     <Routes>
-      {/* ── Public pages ──────────────────────────────── */}
+
+      {/* ── Public routes ────────────────────────────── */}
       <Route element={<PublicLayout />}>
         <Route index            element={<Page><HomePage /></Page>} />
         <Route path="about"     element={<Page><AboutPage /></Page>} />
@@ -74,40 +87,22 @@ export default function App() {
         <Route path="*"         element={<Page><NotFoundPage /></Page>} />
       </Route>
 
-      {/* ── Admin login (full screen, no public layout) ── */}
+      {/* ── Admin login (standalone, no layout) ──────── */}
       <Route path="/admin/login"
              element={<Page><AdminLoginPage /></Page>} />
 
-      {/* ── Admin area (protected) ────────────────────── */}
-      <Route
-        path="/admin/*"
-        element={
-          <ProtectedRoute>
-            <AdminLayout>
-              <Suspense fallback={<PageLoader />}>
-                <Routes>
-                  <Route index
-                         element={<Page><AdminDashboardPage /></Page>} />
-                  <Route path="devotionals"
-                         element={<Page><AdminDevotionalsPage /></Page>} />
-                  <Route path="devotionals/new"
-                         element={<Page><AdminDevotionalEditor /></Page>} />
-                  <Route path="devotionals/:id"
-                         element={<Page><AdminDevotionalEditor /></Page>} />
-                  <Route path="prayer-requests"
-                         element={<Page><AdminPrayerPage /></Page>} />
-                  <Route path="messages"
-                         element={<Page><AdminMessagesPage /></Page>} />
-                  <Route path="subscribers"
-                         element={<Page><AdminSubscribersPage /></Page>} />
-                  <Route path="stories"
-                         element={<Page><AdminStoriesPage /></Page>} />
-                </Routes>
-              </Suspense>
-            </AdminLayout>
-          </ProtectedRoute>
-        }
-      />
+      {/* ── Admin dashboard (protected + sidebar layout) */}
+      <Route path="/admin" element={<AdminProtectedLayout />}>
+        <Route index                    element={<Page><AdminDashboardPage /></Page>} />
+        <Route path="devotionals"       element={<Page><AdminDevotionalsPage /></Page>} />
+        <Route path="devotionals/new"   element={<Page><AdminDevotionalEditor /></Page>} />
+        <Route path="devotionals/:id"   element={<Page><AdminDevotionalEditor /></Page>} />
+        <Route path="prayer-requests"   element={<Page><AdminPrayerPage /></Page>} />
+        <Route path="messages"          element={<Page><AdminMessagesPage /></Page>} />
+        <Route path="subscribers"       element={<Page><AdminSubscribersPage /></Page>} />
+        <Route path="stories"           element={<Page><AdminStoriesPage /></Page>} />
+      </Route>
+
     </Routes>
   )
 }
