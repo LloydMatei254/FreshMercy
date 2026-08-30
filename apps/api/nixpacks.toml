@@ -3,9 +3,9 @@ cmds = ["npm install --legacy-peer-deps"]
 
 [phases.build]
 cmds = [
-  "npx prisma generate --schema=../../prisma/schema.prisma",
+  "npx prisma generate --schema=prisma/schema.prisma",
   "npx tsc"
 ]
 
 [start]
-cmd = "node /app/apps/api/dist/index.js"
+cmd = "node dist/index.js"
