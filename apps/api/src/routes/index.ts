@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import { Router } from 'express'
 import rateLimit from 'express-rate-limit'
 import { env } from '../config/env.js'
 
@@ -30,6 +31,15 @@ const formLimiter = rateLimit({
   message: { success: false, error: { code: 'TOO_MANY_REQUESTS', message: 'Too many submissions — please wait before trying again.' } },
 })
 
+// Login gets its own limiter — 50 attempts per 15 minutes per IP
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max:      50,
+  standardHeaders: true,
+  legacyHeaders:   false,
+  message: { success: false, error: { code: 'TOO_MANY_REQUESTS', message: 'Too many login attempts — please wait a few minutes.' } },
+})
+
 router.use(globalLimiter)
 
 // ── Health ────────────────────────────────────────────────
@@ -59,7 +69,7 @@ router.post('/contact', formLimiter, contact.submitContact)
 router.get('/stories', story.getApprovedStories)
 
 // ── Admin Auth ────────────────────────────────────────────
-router.post('/admin/auth/login',   formLimiter, admin.login)
+router.post('/admin/auth/login',   loginLimiter, admin.login)
 router.post('/admin/auth/logout',  admin.logout)
 router.get('/admin/auth/me',       requireAuth, admin.getMe)
 

@@ -63,7 +63,8 @@ export default function AdminLoginPage() {
                 />
                 {loginError && (
                   <p className="text-xs text-red-500 text-center" role="alert">
-                    Invalid email or password
+                    {(loginError as { response?: { data?: { error?: { message?: string } } } })
+                      ?.response?.data?.error?.message ?? 'Invalid email or password'}
                   </p>
                 )}
                 <Button
