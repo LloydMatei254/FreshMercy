@@ -14,7 +14,30 @@ app.use(helmet({
 }))
 
 app.use(cors({
-  origin:         env.FRONTEND_URL,
+  origin: (origin, callback) => {
+    // Allow requests with no origin (mobile apps, curl, Postman)
+    if (!origin) return callback(null, true)
+
+    const allowed = [
+      env.FRONTEND_URL,
+      // Allow all Vercel preview deployments for this project
+      /https:\/\/fresh-mercy-web.*\.vercel\.app$/,
+      /https:\/\/freshmercy.*\.vercel\.app$/,
+      // Allow localhost for development
+      'http://localhost:5173',
+      'http://localhost:3000',
+    ]
+
+    const isAllowed = allowed.some((pattern) =>
+      pattern instanceof RegExp ? pattern.test(origin) : pattern === origin
+    )
+
+    if (isAllowed) {
+      callback(null, true)
+    } else {
+      callback(new Error(`CORS: origin ${origin} not allowed`))
+    }
+  },
   credentials:    true,
   methods:        ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],

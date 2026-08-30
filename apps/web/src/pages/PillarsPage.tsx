@@ -60,7 +60,7 @@ export default function PillarsPage() {
         url="/pillars"
       />
 
-      <div className="bg-forest pt-32 pb-16 px-5 text-center">
+      <div className="bg-forest pt-16 pb-16 px-5 text-center">
         <span className="section-label text-gold/80">What We Stand On</span>
         <h1 className="font-serif text-display-lg text-cream mt-2 mb-4">Our Pillars</h1>
         <p className="text-cream/70 max-w-xl mx-auto leading-relaxed">

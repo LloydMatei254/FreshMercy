@@ -46,7 +46,7 @@ function LogoMark() {
 function Hero() {
   return (
     <section
-      className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden text-center px-6 pt-24 pb-20"
+      className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden text-center px-6 pb-20"
       style={{ background: 'linear-gradient(160deg, #1A3020 0%, #2D4A2D 45%, #3A5C3A 70%, #1E2D1E 100%)' }}
       aria-labelledby="hero-heading"
     >

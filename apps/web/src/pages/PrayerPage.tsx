@@ -66,7 +66,7 @@ export default function PrayerPage() {
       />
 
       {/* Header */}
-      <div className="bg-forest pt-32 pb-16 px-5 text-center">
+      <div className="bg-forest pt-16 pb-16 px-5 text-center">
         <Heart className="h-10 w-10 text-gold mx-auto mb-4" aria-hidden="true" />
         <span className="section-label text-gold/80">You Are Covered</span>
         <h1 className="font-serif text-display-lg text-cream mt-2 mb-4">

@@ -29,7 +29,7 @@ export default function DevotionalsPage() {
       />
 
       {/* Page header */}
-      <div className="bg-forest pt-32 pb-16 text-center px-5">
+      <div className="bg-forest pt-16 pb-16 text-center px-5">
         <span className="section-label text-gold/80">New Every Morning</span>
         <h1 className="font-serif text-display-lg text-cream mt-2 mb-4">Devotionals</h1>
         <p className="text-cream/70 max-w-xl mx-auto text-base leading-relaxed">

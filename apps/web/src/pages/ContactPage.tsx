@@ -50,7 +50,7 @@ export default function ContactPage() {
         url="/contact"
       />
 
-      <div className="bg-forest pt-32 pb-16 px-5 text-center">
+      <div className="bg-forest pt-16 pb-16 px-5 text-center">
         <span className="section-label text-gold/80">Reach Out</span>
         <h1 className="font-serif text-display-lg text-cream mt-2 mb-4">
           Where Mercy Meets You

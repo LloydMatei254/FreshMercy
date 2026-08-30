@@ -43,7 +43,7 @@ export default function SearchPage() {
         noIndex
       />
 
-      <div className="bg-forest pt-32 pb-16 px-5 text-center">
+      <div className="bg-forest pt-16 pb-16 px-5 text-center">
         <span className="section-label text-gold/80">Find What You Need</span>
         <h1 className="font-serif text-display-lg text-cream mt-2 mb-8">Search Devotionals</h1>
         <div className="max-w-xl mx-auto relative">

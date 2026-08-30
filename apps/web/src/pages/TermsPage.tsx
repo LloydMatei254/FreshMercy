@@ -4,7 +4,7 @@ export default function TermsPage() {
   return (
     <>
       <SEO title="Terms of Use" url="/terms" noIndex />
-      <div className="bg-forest pt-32 pb-16 px-5 text-center">
+      <div className="bg-forest pt-16 pb-16 px-5 text-center">
         <h1 className="font-serif text-display-lg text-cream mb-2">Terms of Use</h1>
         <p className="text-cream/60 text-sm">Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
       </div>

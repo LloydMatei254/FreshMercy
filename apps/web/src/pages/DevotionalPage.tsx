@@ -56,7 +56,7 @@ export default function DevotionalPage() {
       />
 
       {/* Hero banner */}
-      <div className="bg-forest pt-32 pb-16 px-5">
+      <div className="bg-forest pt-16 pb-16 px-5">
         <div className="max-w-3xl mx-auto">
           <Link
             to="/devotionals"
