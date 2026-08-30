@@ -6,7 +6,7 @@ export const apiClient = axios.create({
   baseURL: `${API_URL}/api`,
   timeout: 15000,
   headers: { 'Content-Type': 'application/json' },
-  withCredentials: true,  // send cookies (auth)
+  withCredentials: false,  // JWT auth via Authorization header, not cookies
 })
 
 // Attach JWT token from localStorage if present
